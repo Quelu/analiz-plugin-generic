@@ -28,46 +28,61 @@ fileTypes: [
 ```
 
 #### config.options :  _Array_
-Options the module allows for the user.
-
-_TODO : See if there is another type of value than Boolean_
+Options the module allows for the user. Available types are :
+- list
 
 ```
 options: [
-  isHtml5: true,
-  lower-attribute: true
+ {
+    name: 'inputName',
+    label: 'Label name',
+    type: 'list',
+    data: [
+      {
+        name: 'Name',
+        value: 'value'
+      },
+      ...
+    ]
+  },
+  ...
 ]
 ```
 
-### run
-The _run()_ function has to return an array of objects.
+### run : _Function_
+The _run()_ function has to pass to the callback as result an array of objects. This is the function where you analyze files.
 
-#### Example
+The parameters are :
+- **files :** An array of the files send by Analiz (contains only the files types that are passed to _config.fileTypes_)
+- **options :** Options chosen by the user
+- **callback :** Callback function to send the results
+
+#### Array to pass to the callback
 
 ```
 [
   {
     type: 'file-list',
     data: [
-      ErrorObject1,
-      ErrorObject2,
-      ErrorObject3
+      analyzedObject1,
+      analyzedObject2,
+      analyzedObject3
     ]
   },
   {
     type: 'one-file',
-    data: ErrorObject4
+    data: analyzedObject4
   }
 ]
 ```
 
-#### type
+#### Object.type : _String_
 The data type available are
 - _file-list_
 - _one-file_
 
-#### Error object
-An error object with this structure :
+#### Object.data : _Array_
+An array of _analyzedObject_ with this structure :
 
 ```
 {
