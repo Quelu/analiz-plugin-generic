@@ -72,6 +72,7 @@ The parameters are :
   {
     file: 'path/to/the/file.ext'
     type: 'file-list',
+    id: module.exports.config.id,
     data: [
       analyzedObject1,
       analyzedObject2,
@@ -85,9 +86,15 @@ The parameters are :
 ]
 ```
 
+#### `callback.file` : _String_
+The path of the file
+
 #### `callback.type` : _String_
 The data type available are
 - _file-list_
+
+#### `callback.id` : `module.exports.config.id`
+Just set the id of the module for management in Analiz 
 
 #### `callback.data` : _Array_
 An array of `analyzedObject` with this structure :
