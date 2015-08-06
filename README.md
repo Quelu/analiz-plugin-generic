@@ -70,6 +70,7 @@ The parameters are :
 ```
 [
   {
+    file: 'path/to/the/file.ext'
     type: 'file-list',
     data: [
       analyzedObject1,
@@ -93,9 +94,9 @@ An array of `analyzedObject` with this structure :
 
 ```
 {
-  file: 'path/to/the/file.ext',
   type: 'notification/warning/error',
   message: 'error message for the user',
-  line: (optional)
+  line: 1,
+  character
 }
 ```
