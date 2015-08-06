@@ -2,13 +2,21 @@
 Generic template for creating a module for the application Analiz
 
 ## Documentation
-### config : _Object_
+All the **visible** strings like a label in the main application have to be an language selector object.
+```
+{
+  'en': 'English label',
+  'fr': 'French label'
+}
+```
+
+### `config` : _Object_
 The config property is an object with the following values.
 
-#### config.name : _String_
+#### `config.name` : _String_ **(must be translatable)**
 The module name that will be display in Analiz
 
-#### config.category : _String_
+#### `config.category` : _String_
 The module category. Choose one of the following :
 - html
 - css
@@ -17,9 +25,8 @@ The module category. Choose one of the following :
 - accessibility
 - misc
 
-#### config.fileTypes : _Array_
+#### `config.fileTypes` : _Array_
 List of the files the module will analize
-
 ```
 fileTypes: [
   '.html',
@@ -27,38 +34,39 @@ fileTypes: [
 ]
 ```
 
-#### config.options :  _Array_
+#### `config.options` :  _Array_
 Options the module allows for the user. Available types are :
 - list
 
 ```
-options: [
- {
-    name: 'inputName',
-    label: 'Label name',
-    type: 'list',
-    data: [
-      {
-        name: 'Name',
-        value: 'value'
-      },
-      ...
-    ]
+options: [ {
+  name: 'inputName',
+  label: {
+    'en': 'Label name',
+    'fr': 'Label name'
   },
-  ...
-]
+  type: 'list',
+  data: [
+    {
+      name:  {
+        'en': 'Label name',
+        'fr': 'Label name'
+      },
+      value: 'value'
+    }, ...
+  ]
+}, ... ]
 ```
 
-### run : _Function_
-The _run()_ function has to pass to the callback as result an array of objects. This is the function where you analyze files.
+### `run` : _Function_
+The _run()_ function is asynchronous, so you have to pass the result of each analyzed files to the callback while analysis is performed.
 
 The parameters are :
-- **files :** An array of the files send by Analiz (contains only the files types that are passed to _config.fileTypes_)
-- **options :** Options chosen by the user
-- **callback :** Callback function to send the results
+- `files` : An array of the files send by _Analiz_ (contains only the files types that are passed to `config.fileTypes`)
+- `options` : Options chosen by the user
+- `callback` : Callback to call after analyzing each file, take 2 parameters : `error` & `result`
 
-#### Array to pass to the callback
-
+#### Example of array to pass to the callback
 ```
 [
   {
@@ -76,13 +84,12 @@ The parameters are :
 ]
 ```
 
-#### Object.type : _String_
+#### `callback.type` : _String_
 The data type available are
 - _file-list_
-- _one-file_
 
-#### Object.data : _Array_
-An array of _analyzedObject_ with this structure :
+#### `callback.data` : _Array_
+An array of `analyzedObject` with this structure :
 
 ```
 {
