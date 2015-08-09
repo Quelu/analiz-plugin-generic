@@ -2,7 +2,7 @@
 Generic template for creating a module for the application Analiz
 
 ## Documentation
-All the **visible** strings like a label in the main application have to be an language selector object.
+All the **visible** strings like a label in the main application have to be a language selector object.
 ```
 {
   'en': 'English label',
@@ -37,6 +37,7 @@ fileTypes: [
 #### `config.options` :  _Array_
 Options the module allows for the user. Available types are :
 - list
+- boolean
 
 ```
 options: [ {
@@ -72,7 +73,6 @@ The parameters are :
   {
     file: 'path/to/the/file.ext'
     type: 'file-list',
-    id: module.exports.config.id,
     data: [
       analyzedObject1,
       analyzedObject2,
@@ -93,9 +93,6 @@ The path of the file
 The data type available are
 - _file-list_
 
-#### `callback.id` : `module.exports.config.id`
-Just set the id of the module for management in Analiz 
-
 #### `callback.data` : _Array_
 An array of `analyzedObject` with this structure :
 
@@ -104,6 +101,6 @@ An array of `analyzedObject` with this structure :
   type: 'notification/warning/error',
   message: 'error message for the user',
   line: 1,
-  character
+  character: 5
 }
 ```
