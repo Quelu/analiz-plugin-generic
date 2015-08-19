@@ -8,15 +8,15 @@ Generic template for creating a module for the application Analiz
 	- [`config.category` - _String_](#configcategory-string)
 	- [`config.fileTypes` - _Array_](#configfiletypes-array)
 	- [`config.renderType` - _String_](#configrendertype-string)
-	- [`config.options` -  _Array_](#configoptions-array)
+	- [`config.options` :  _Array_](#configoptions-array)
 		- [`optionArray.name` - _String_](#optionarrayname-string)
-		- [`optionArray.label` - _String_ **(optional & must be translatable)**](#optionarraylabel-string-must-be-translatable)
+		- [`optionArray.label` - _String_ **(must be translatable)**](#optionarraylabel-string-must-be-translatable)
 		- [`optionArray.type` - _String_](#optionarraytype-string)
 		- [`optionArray.data` - _String_](#optionarraydata-string)
 - [`run` - _Function_](#run-function)
 	- [Example of the result object to pass to the callback](#example-of-the-result-object-to-pass-to-the-callback)
 	- [`result.file` - _String_](#resultfile-string)
-	- [`result.data`](#resultdata-)
+	- [`result.data`](#resultdata)
 
 All the **visible** strings like a label in the main application have to be a language selector object.
 ```
@@ -26,13 +26,13 @@ All the **visible** strings like a label in the main application have to be a la
 }
 ```
 
-### `config` : _Object_
+### `config` - _Object_
 The config property is an object with the following values.
 
-#### `config.name` : _String_ **(must be translatable)**
+#### `config.name` - _String_ **(must be translatable)**
 The module name that will be display in Analiz
 
-#### `config.category` : _String_
+#### `config.category` - _String_
 The module category. Choose one of the following :
 - html
 - css
@@ -41,7 +41,7 @@ The module category. Choose one of the following :
 - accessibility
 - misc
 
-#### `config.fileTypes` : _Array_
+#### `config.fileTypes` - _Array_
 List of the files the module will analize
 ```
 fileTypes: [
@@ -50,7 +50,7 @@ fileTypes: [
 ]
 ```
 
-#### `config.renderType` : _String_
+#### `config.renderType` - _String_
 Type of rendering for the results. Available render types are :
 - errors
 - raw
@@ -72,19 +72,19 @@ options: [
 ]
 ```
 
-##### `optionArray.name` : _String_
+##### `optionArray.name` - _String_
 The input name of the options, use the same as the plugin
 
-##### `optionArray.label` : _String_ **(must be translatable)**
+##### `optionArray.label` - _String_ **(must be translatable)**
 Optional, the label for the option that will be display in Analiz
-##### `optionArray.type` : _String_
+##### `optionArray.type` - _String_
 Available types are :
 - list
 - boolean
 - separator
 - documentation-link
 
-##### `optionArray.data` : _String_
+##### `optionArray.data` - _String_
 - `type` is separator or documentation-link, `data` a string with the desired value
 - `type` is a boolean, `data` is a boolean.
 - `type` is a list, `data` is an array of objects like that :
@@ -98,7 +98,7 @@ Available types are :
 ```
 
 
-### `run` : _Function_
+### `run` - _Function_
 The _run()_ function is asynchronous, so you have to pass the result of each analyzed files to the callback while analysis is performed.
 
 The parameters are :
@@ -114,10 +114,10 @@ The parameters are :
 }
 ```
 
-#### `result.file` : _String_
+#### `result.file` - _String_
 The path of the file
 
-#### `result.data` :
+#### `result.data`
 The result data of the analyze.
 - If `config.renderType` is errors, data is an array of errors objects with this structure :
 
