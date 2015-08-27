@@ -1,6 +1,14 @@
 # Analiz generic module template
 Generic template for creating a module for the application Analiz
 
+## Contribute
+
+Just clone this repo in a specific folder
+
+```
+git clone https://github.com/analiz-app/analiz-plugin-generic.git analiz-plugin-your-plugin-name
+```
+
 ## Documentation
 
 - [`config` - _Object_](#config-object)
